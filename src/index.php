@@ -6,6 +6,7 @@ require_once('controller/conversationController.php');
 require_once('controller/friendController.php');
 require_once('controller/loginController.php');
 require_once('controller/signupController.php');
+require_once( 'controller/contactController.php' );
 
 
 if (isset($_GET['action'])) {
@@ -31,6 +32,10 @@ if (isset($_GET['action'])) {
             
         case 'logout':
             logout();
+            break;
+        
+        case 'contact':
+            sendMail();
             break;
 
 

@@ -30,6 +30,7 @@ function signup( $post ) {
   $data->password         = $post['password'];
   $data->password_confirm = $post['password_confirm'];
   
+  
 
   # Check if passwords are matching
   try {

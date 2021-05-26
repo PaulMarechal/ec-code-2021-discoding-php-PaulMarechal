@@ -2,10 +2,16 @@
 <div class="col-sm-6 col-md-3 friends-list">
 
     <ul class="list-group mt-3 mb-3">
+        <li class="list-group-item contactButton">
+            <a href="/index.php?action=contact">
+                <i class="bi-envelope-fill mx-2"></i>Contact
+            </a>
+        </li>
         <li class="list-group-item">
             <a href="/index.php?action=friend">
                 <i class="bi-people-fill mx-2"></i>Friends
             </a>
+            
         </li>
     </ul>
     <ul class="list-group border-0">
