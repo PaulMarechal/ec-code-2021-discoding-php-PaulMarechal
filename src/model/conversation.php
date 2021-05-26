@@ -162,4 +162,15 @@ class Conversation
         return $conversation_id;
     }
 
+    public function __construct( $user = null ) {
+
+        if( $user != null ):
+            $this->setId = $id;
+            $this->setUser_id = $user_id;
+            $this->setInterlocutorId = $interlocutor_id;
+            $this->setInterlocutorUsername = $interlocutor_username;
+            $this->setUpdatedAt = $updated_at;
+        endif;
+      }
+
 }
