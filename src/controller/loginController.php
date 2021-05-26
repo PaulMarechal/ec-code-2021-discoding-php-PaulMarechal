@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-
 require_once('model/user.php');
 
 /****************************
@@ -49,3 +48,4 @@ function logout()
 
     header('location: index.php');
 }
+

@@ -31,6 +31,7 @@ function conversationPage()
 
 function getOrCreateConversationWithUser($user_id)
 {
+    
     $user_id2 = $_GET['interlocutor_id'] ?? 0;
     $conversation_id = Conversation::getConversationIdBetweenUsers($user_id, $user_id2);
 

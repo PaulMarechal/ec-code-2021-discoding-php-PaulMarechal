@@ -21,6 +21,13 @@
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary btn-lg btn-block w-100">Login</button>
                 </div>
+
+                <div class="md-6">
+                  <a href="index.php?action=signup" class="btn btn-info btn-lg btn-block w-100">Signup</a>
+                </div>
+                <!-- <div class="mb-3">
+                    <button type="submit" class="btn btn-info btn-lg btn-block w-100">signUp</button>
+                </div> -->
             </form>
         </div>
     </div>
