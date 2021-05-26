@@ -222,12 +222,13 @@ class User
     // Insert new user
     $req->closeCursor();
 
-    $req  = $db->prepare( "INSERT INTO users ( email, username, password ) VALUES ( :email, :username, :password )" );
+    $req  = $db->prepare( "INSERT INTO users ( email, password, username ) VALUES ( :email, :password, :username )" );
     $req->execute( array(
       'email'     => $this->getEmail(),
+      'password'  => $this->getPassword(),
       'username'  => $this->getUsername(),
-      'password'  => $this->getPassword()
     ));
+
 
     // Close databse connection
     $db = null;

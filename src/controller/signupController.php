@@ -25,10 +25,10 @@ function signupPage() {
 
 function signup( $post ) {
   $data                   = new stdClass();
-  $data->email           = $post['email'];
+  $data->email            = $post['email'];
   $data->username         = $post['username'];
-  $data->password         = $post['password'];
-  $data->password_confirm = $post['password_confirm'];
+  $data->password         = hash('sha256', $post['password']);
+  $data->password_confirm = hash('sha256', $post['password_confirm']);
   
   
 
@@ -48,7 +48,4 @@ function signup( $post ) {
   require('view/signupView.php');
 } 
 
-
-
-
- ?>
+?>

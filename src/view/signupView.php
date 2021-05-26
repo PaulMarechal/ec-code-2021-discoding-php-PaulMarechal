@@ -5,7 +5,7 @@
         <div class="col-4 mx-auto auth-container">
 
         <h3>Signup!</h3>
-        <p class="text-muted">join the huge Discoding family!</p>
+        <p class="text-muted text-muted-signup">Join the huge Discoding family!</p>
           
             <form method="post" action="" class="custom-form">
 
