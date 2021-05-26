@@ -3,8 +3,10 @@
 <div class="container-fluid d-flex h-100 characterBackground">
     <div class="row align-self-center w-100">
         <div class="col-md-4 mx-auto auth-container">
-            <h3>Welcome back!
-            </h3>
+            <h3>Welcome back!</h3>
+
+            <i class="contactLogin bi-envelope-fill align-self-center d-flex justify-content-end" title="Back" onclick="location.href='index.php?action=contact'"></i>
+
             <p class="text-muted">We're so excited to see you again!</p>
             <form action="/index.php?action=login" method="post">
                 <div class="mb-3">
