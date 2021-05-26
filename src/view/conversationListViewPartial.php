@@ -2,14 +2,21 @@
 <div class="col-sm-6 col-md-3 friends-list">
 
     <ul class="list-group mt-3 mb-3">
-        <li class="list-group-item contactButton">
+        <li class="list-group-item ">
             <a href="/index.php?action=contact">
                 <i class="bi-envelope-fill mx-2"></i>Contact
             </a>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item my-3">
             <a href="/index.php?action=friend">
                 <i class="bi-people-fill mx-2"></i>Friends
+            </a>
+            
+        </li>
+
+        <li class="list-group-item my-2">
+            <a href="/index.php?action=logout">
+                <i class="bi bi-eject-fill mx-2"></i>Logout
             </a>
             
         </li>
