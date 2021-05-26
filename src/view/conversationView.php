@@ -7,7 +7,7 @@
 
         <div class="col-sm-6 col-md-9 mt-2">
             <div class="row m-auto">
-                <h3><?= (isset($interlocutor['username'])) ?></h3>
+                <h3><?= $interlocutor['username'] ?></h3>
 
                 <?php foreach ($messages
 

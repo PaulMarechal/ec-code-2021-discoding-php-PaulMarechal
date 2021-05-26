@@ -111,7 +111,7 @@ class User
         // Close database connection
         $db = null;
 
-        return $req->fetchAll();
+        return $req->fetch();
     }
 
     /***************************************
