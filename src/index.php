@@ -1,5 +1,6 @@
 <?php
 
+// ajouter session user test 
 date_default_timezone_set('Europe/Paris');
 
 require_once('controller/conversationController.php');
@@ -25,8 +26,6 @@ if (isset($_GET['action'])) {
                 signup($_POST);
             } else {
                 signupPage();
-                
-
             }
             break;
             
@@ -37,12 +36,6 @@ if (isset($_GET['action'])) {
         case 'contact':
             sendMail();
             break;
-
-
-            // signupPage();
-            //     if ( !empty( $_POST )) signup($_POST);
-            //     else signupPage();
-            // break;
 
         case 'conversation':
             conversationPage();

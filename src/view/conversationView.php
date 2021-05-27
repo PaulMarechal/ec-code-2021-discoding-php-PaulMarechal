@@ -43,6 +43,14 @@
                                 <?= $message['content'] ?>
                             </div>
                         </div>
+                        
+                        <!-- Delete a message -->
+                        <form method="POST" action="/index.php?action=conversation&sub_action=delete_message&conversation_id=<?= $conversation_id ?>" style="margin-top:28px;">
+                            <input type="hidden" value="<?= isset($message['id']) ? $message['id'] : '' ?>" name="id_message"/>
+                            <button type="submit" name="delete" class="deleteMessage" style="border:none; background:none; color:white" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </form>
                     </div>
                 <?php endforeach; ?>
 

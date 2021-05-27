@@ -180,3 +180,9 @@ html, body {
 	/*border: 5px solid red;*/
 	max-height: 10rem;
 }
+
+.friendScroll{
+    overflow:scroll; 
+    height:360px;
+}
+
