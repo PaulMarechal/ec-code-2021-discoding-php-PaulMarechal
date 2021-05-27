@@ -162,14 +162,15 @@ class Conversation
         return $conversation_id;
     }
 
-    public function __construct( $user = null ) {
+    public function __construct( $conversation = null ) {
 
-        if( $user != null ):
-            $this->setId = $id;
-            $this->setUser_id = $user_id;
-            $this->setInterlocutorId = $interlocutor_id;
-            $this->setInterlocutorUsername = $interlocutor_username;
-            $this->setUpdatedAt = $updated_at;
+        if( $conversation != null ):
+            $this->setId( isset( $conversation->id ) ? $conversation->id : null );
+            $this->setUserId( isset( $conversation->user_id) ? $conversation->user_id : null );
+            $this->setInterlocutorId( isset( $conversation->interlocutor_id) ? $conversation->interlocutor_id : null );
+            $this->setInterlocutorUsername( isset( $conversation->interlocutor_username) ? $conversation->interlocutor_username : null );
+            $thiis->setUpdatedAt(isset( $conversation->updated_at) ? $conversation->updated_at : null );
+          
         endif;
       }
 
