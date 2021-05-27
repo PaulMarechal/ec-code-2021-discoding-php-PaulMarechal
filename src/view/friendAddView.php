@@ -6,15 +6,18 @@
 
         <div class="col-sm-6 col-md-9 mt-2">
             <div class="row">
+                <!-- Title friend page -->
                 <div class="col-10">
                     <h2><i class="bi-people-fill mx-2"></i>Friends</h2>
                 </div>
+                <!-- Button add a friend -->
                 <div class="col-2 align-self-center d-flex justify-content-end">
                     <a href="#" class="btn btn-success disabled">Add a Friend</a>
                     </btn>
                 </div>
             </div>
             <form method="post">
+                <!-- Form add a friend ( case sensitive) -->
                 <div class="mb-3">
                     <p class="lead">ADD FRIEND</p>
                     <p class="text-muted small">You can add a friend with their Discoding Tag. It's cAsE sEnSitIve!</p>

@@ -9,6 +9,7 @@
             <div class="row m-auto">
                 <h3><?= $interlocutor['username'] ?></h3>
 
+                <!-- Display message (name + image) -->
                 <?php foreach ($messages as $message):
                     if ($message['user_id'] == $user_id) {
                         $msgUser = $user;
@@ -16,7 +17,8 @@
                         $msgUser = $interlocutor;
                     }
                     ?>
-
+                    
+                    <!-- Display message (username + picture + datetime) -->
                     <div class="card flex-row flex-wrap">
                         <div class="card-header" style="background-color: inherit;">
                             <?php
@@ -45,6 +47,7 @@
                 <?php endforeach; ?>
 
             </div>
+            <!-- Button send message -->
             <form class="d-flex mt-3" action="/index.php?action=conversation&sub_action=add_message&conversation_id=<?= $conversation_id ?>" method="post">
                 <div class="flex-grow-1">
                     <input type="text" class="form-control" id="content" name="content"/>

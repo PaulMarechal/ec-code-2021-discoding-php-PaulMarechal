@@ -1,8 +1,8 @@
 <?php ob_start(); ?>
 <div class="col-sm-6 col-md-3 friends-list">
 
+    <!-- Main menu -->
     <ul class="list-group mt-3 mb-3">
-
         <li class="list-group-item my-2">
             <a href="/index.php?action=logout">
                 <i class="bi bi-eject-fill mx-2"></i>Logout
@@ -21,8 +21,8 @@
     </ul>
     
     
-    
-    <ul class="list-group border-0" style="overflow:scroll; height:360px;">
+    <!-- Friend list on menu -->
+    <ul class="list-group border-0 friendScroll">
         <?php foreach ($conversations as $conv): ?>
             <li class="list-group-item border-0">
                 
@@ -47,16 +47,14 @@
 
         <div class="menuAccordeon">
         <ul class="nav">
-
-		<li class="nav__item">
-			<a href="#profile" class="nav__item-link">
-				<i class="fas fa-user"></i> Coding
-			</a>
+		    <li class="nav__item">
+			    <a href="#profile" class="nav__item-link">
+				    <i class="fas fa-user"></i> Coding
+			    </a>
 			<div id="profile" class="nav__submenu">
 				<a href="#" class="nav__submenu-link">Général</a>
                 <a href="#" class="nav__submenu-link">Jeux</a>
 				<a href="#" class="nav__submenu-link">Musique</a>
-                
 			</div>
 		</li>
 		</li>
