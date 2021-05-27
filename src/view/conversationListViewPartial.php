@@ -22,7 +22,7 @@
     
     
     
-    <ul class="list-group border-0">
+    <ul class="list-group border-0" style="overflow:scroll; height:360px;">
         <?php foreach ($conversations as $conv): ?>
             <li class="list-group-item border-0">
                 

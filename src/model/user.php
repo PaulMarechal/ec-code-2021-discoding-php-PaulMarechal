@@ -222,11 +222,12 @@ class User
     // Insert new user
     $req->closeCursor();
 
-    $req  = $db->prepare( "INSERT INTO users ( email, password, username ) VALUES ( :email, :password, :username )" );
+    $req  = $db->prepare( "INSERT INTO users ( email, password, username, avatar_url ) VALUES ( :email, :password, :username, :avatar_url )" );
     $req->execute( array(
       'email'     => $this->getEmail(),
       'password'  => $this->getPassword(),
       'username'  => $this->getUsername(),
+      'avatar_url'=> $this->getAvatarUrl(),
     ));
 
 
@@ -241,6 +242,7 @@ class User
       $this->setId( isset( $user->id ) ? $user->id : null );
       $this->setEmail( $user->email );
       $this->setUsername( $user->username );
+      $this->setAvatarUrl( $user->avatar_url);
       $this->setPassword( $user->password, isset( $user->password_confirm ) ? $user->password_confirm : false );
       
     endif;

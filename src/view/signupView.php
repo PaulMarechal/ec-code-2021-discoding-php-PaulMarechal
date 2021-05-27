@@ -18,7 +18,10 @@
                     <label for="email">Username</label>
                     <input type="username" name="username" value="" id="username" class="form-control" />
                 </div>
-
+                <div class="form-group espace">
+                    <label for="avatar_url">Avatar</label>
+                    <input type="avatar_url" name="avatar_url" value="" id="avatar_url" class="form-control" />
+                </div>
                 <div class="form-group espace">
                     <label for="password">Mot de passe</label>
                     <input type="password" name="password" id="password" class="form-control" />

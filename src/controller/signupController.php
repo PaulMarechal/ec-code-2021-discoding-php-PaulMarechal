@@ -27,6 +27,7 @@ function signup( $post ) {
   $data                   = new stdClass();
   $data->email            = $post['email'];
   $data->username         = $post['username'];
+  $data->avatar_url       = $post['avatar_url'];
   $data->password         = hash('sha256', $post['password']);
   $data->password_confirm = hash('sha256', $post['password_confirm']);
   
