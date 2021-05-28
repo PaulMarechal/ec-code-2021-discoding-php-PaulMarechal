@@ -2,7 +2,12 @@
 
     require_once('model/user.php');
     require_once('conversationController.php');
-
+    
+    /**
+     * friendPage
+     *
+     * @return void
+     */
     function friendPage()
     {
         $user_id = $_SESSION['user_id'] ?? false;
@@ -25,7 +30,13 @@
     $users = User::filterUsers( $search );
     //var_dump( $users );
  }
-
+    
+    /**
+     * addFriend
+     *
+     * @param  mixed $user_id
+     * @return void
+     */
     function addFriend($user_id)
     {
         $message = '';
@@ -45,7 +56,13 @@
         require('view/friendAddView.php');
     }
 
-
+    
+    /**
+     * displayFriends
+     *
+     * @param  mixed $user_id
+     * @return void
+     */
     function displayFriends($user_id)
     {
         $user_data = User::getUserById($user_id);

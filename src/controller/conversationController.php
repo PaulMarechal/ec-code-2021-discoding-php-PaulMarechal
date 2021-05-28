@@ -3,6 +3,11 @@ require_once('model/conversation.php');
 require_once('model/message.php');
 require_once('model/server.php');
 
+/**
+ * conversationPage
+ *
+ * @return void
+ */
 function conversationPage()
 {
     $user_id = $_SESSION['user_id'] ?? false;
@@ -29,7 +34,13 @@ function conversationPage()
             break;
     }
 }
-
+ 
+ /**
+  * getOrCreateConversationWithUser
+  *
+  * @param  mixed $user_id
+  * @return void
+  */
  function getOrCreateConversationWithUser($user_id)
  {
 
@@ -41,6 +52,13 @@ function conversationPage()
     }
     header('Location: index.php?action=conversation&sub_action=detail&conversation_id=' . $conversation_id);
 }
+
+/**
+ * conversationDetail
+ *
+ * @param  mixed $user_id
+ * @return void
+ */
 function conversationDetail($user_id)
 {
     $conversation_id = $_GET['conversation_id'];
@@ -53,6 +71,13 @@ function conversationDetail($user_id)
     $messagesFiltered = Message::filterMessages($conversation_id, $search);
     require('view/conversationView.php');
 }
+
+/**
+ * conversationListPartial
+ *
+ * @param  mixed $user_id
+ * @return void
+ */
 function conversationListPartial($user_id)
 {
     $conversations = Conversation::getAllConversationsForUser($user_id);
@@ -62,6 +87,12 @@ function conversationListPartial($user_id)
     return $conversation_list_content;
 }
 
+/**
+ * addMessage
+ *
+ * @param  mixed $user_id
+ * @return void
+ */
 function addMessage($user_id)
 {
     $conversation_id = $_GET['conversation_id'];
@@ -75,6 +106,12 @@ function addMessage($user_id)
     header('Location: /index.php?action=conversation&sub_action=detail&conversation_id=' . $conversation_id);
 }
 
+/**
+ * messageDelete
+ *
+ * @param  mixed $post
+ * @return void
+ */
 function messageDelete($post){
     $conversation_id = $_GET['conversation_id'];
     $id_message = $post['id_message'] ?? '';

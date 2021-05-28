@@ -23,6 +23,12 @@ function signupPage() {
 * ----- SIGNUP FUNCTION -----
 ***************************/
 
+/**
+ * signup
+ *
+ * @param  mixed $post
+ * @return void
+ */
 function signup( $post ) {
 
   if(!empty($post)){

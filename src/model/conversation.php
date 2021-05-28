@@ -2,6 +2,9 @@
 
 require_once('database.php');
 
+/**
+ * Conversation
+ */
 class Conversation
 {
     protected $id;
@@ -89,7 +92,14 @@ class Conversation
     {
         $this->updated_at = $updated_at;
     }
-
+    
+    /**
+     * getConversationIdBetweenUsers
+     *
+     * @param  mixed $user_id
+     * @param  mixed $user_id2
+     * @return void
+     */
     public static function getConversationIdBetweenUsers($user_id, $user_id2)
     {
         $db = init_db();
@@ -109,7 +119,14 @@ class Conversation
 
         return $data['id'] ?? 0;
     }
-
+    
+    /**
+     * getConversationForUser
+     *
+     * @param  mixed $conversation_id
+     * @param  mixed $user_id
+     * @return void
+     */
     public static function getConversationForUser($conversation_id, $user_id)
     {
         $db = init_db();
@@ -126,7 +143,13 @@ class Conversation
 
         return $req->fetch();
     }
-
+    
+    /**
+     * getAllConversationsForUser
+     *
+     * @param  mixed $user_id
+     * @return void
+     */
     public static function getAllConversationsForUser($user_id)
     {
         $db = init_db();
@@ -144,7 +167,14 @@ class Conversation
         return $req->fetchAll();
     }
 
-
+    
+    /**
+     * createConversationBetweenUsers
+     *
+     * @param  mixed $user_id1
+     * @param  mixed $user_id2
+     * @return void
+     */
     public static function createConversationBetweenUsers($user_id1, $user_id2)
     {
         $db = init_db();
@@ -161,7 +191,13 @@ class Conversation
 
         return $conversation_id;
     }
-
+    
+    /**
+     * __construct
+     *
+     * @param  mixed $conversation
+     * @return void
+     */
     public function __construct( $conversation = null ) {
 
         if( $conversation != null ):

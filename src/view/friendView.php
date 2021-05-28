@@ -20,6 +20,8 @@
                     <a href="/index.php?action=friend&sub_action=add_friend" class="btn btn-success">Add a Friend</a>
                 </div>
             </div>
+
+            <!-- Display all the user friends -->
             <?php if(!empty($_GET['username'])):?>
                     <?php foreach ($users as $user): ?>
                         <li class="d-flex justify-content-between list-group-item">

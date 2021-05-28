@@ -17,11 +17,10 @@
                     <label for="password" class="form-label text-muted small text-uppercase">Choose a number of rooms</label>
                     <select class="custom-select form-control" id="inputGroupSelect01" name="number_rooms">
                         <option selected>Choose...</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
                     </select>
                 </div>
 

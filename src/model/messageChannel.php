@@ -102,7 +102,15 @@ class MessageChannel{
     {
         $this->created_at = $created_at;
     }
-
+    
+    /**
+     * addMessageFromAdmin
+     *
+     * @param  mixed $channel_id
+     * @param  mixed $user_id
+     * @param  mixed $content
+     * @return void
+     */
     public static function addMessageFromAdmin($channel_id, $user_id, $content){
         $db = init_db();
         $req  = $db->prepare( "INSERT INTO message_channel (channel_id, user_id, content) VALUES (?, ?, ?)" );

@@ -2,14 +2,13 @@
 
 <div class="container-fluid">
     <div class="row">
-
         <?= $conversation_list_partial ?>
-
         <div class="col-sm-6 col-md-9 mt-2">
             <div class="row m-auto">
                 <div class="col-md-6">
                     <h3><?= $interlocutor['username'] ?></h3>
                 </div>
+
                     <div class="col-md-6 align-self-center d-flex justify-content-end">
                             <form class="col-md-6 align-self-center d-flex justify-content-end" method="GET" action="/index.php?action=conversation&sub_action=detail&conversation_id=<?= $conversation_id ?>">
                                 <input type="hidden" name="action" value="conversation" /> 
@@ -63,6 +62,7 @@
                                         <?= $messageFiltered['content'] ?>
                                     </div>
                                 </div>
+                                <!-- Display message conversation -->
                             <?php else:  ?>
                                 <div class="card-body">
                                     <div class="card-title d-flex">
@@ -82,6 +82,7 @@
                         <?php endforeach; ?>
                         </div>
                     <?php else: ?>
+                        <!-- Refresh the page all 5 secondes -->
                         <div id="refresh">
                         <?php foreach ($messages as $message):
                             if ($message['user_id'] == $user_id) {

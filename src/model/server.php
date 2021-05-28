@@ -20,104 +20,111 @@ class Server{
         $this->setAvatarUrl( isset( $server->avatar_url ) ? $server->avatar_url : null );
     }
 
-  /**
-   * @return mixed
-   */
-  public function getId()
-  {
-      return $this->id;
-  }
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-  /**
-   * @param mixed $id
-   */
-  public function setId($id)
-  {
-      $this->id = $id;
-  }
-
-
-  /**
-   * @param mixed $username
-   */
-  public function setCreatedAt($created_at)
-  {
-      $this->created_at = $created_at;
-  }
-
-  /**
-   * @return mixed
-   */
-  public function getCreatedAt()
-  {
-      return $this->created_at;
-  }
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
 
-  /**
-   * @return mixed
-   */
-  public function getName()
-  {
-      return $this->name;
-  }
+    /**
+     * @param mixed $username
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->created_at = $created_at;
+    }
 
-  /**
-   * @param mixed $password
-   */
-  public function setName($name)
-  {
-      $this->name = $name;
-  }
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
 
-  /**
-   * @return mixed
-   */
-  public function getIdUser()
-  {
-      return $this->id_user;
-  }
 
-  /**
-   * @param mixed $avatar_url
-   */
-  public function setIdUser($id_user)
-  {
-      $this->id_user = $id_user;
-  }
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-   /**
-   * @return mixed
-   */
-  public function getAvatarUrl()
-  {
-      return $this->avatar_url;
-  }
+    /**
+     * @param mixed $password
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
-  /**
-   * @param mixed $avatar_url
-   */
-  public function setAvatarUrl($avatar_url)
-  {
-      $this->avatar_url = $avatar_url;
-  }
+    /**
+     * @return mixed
+     */
+    public function getIdUser()
+    {
+        return $this->id_user;
+    }
 
-  /**
-   * @return mixed
-   */
-  public function getUrl()
-  {
-      return $this->url;
-  }
-  public function setUrl($url)
-  {
-      $this->url = $url;
-  }
+    /**
+     * @param mixed $avatar_url
+     */
+    public function setIdUser($id_user)
+    {
+        $this->id_user = $id_user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvatarUrl()
+    {
+        return $this->avatar_url;
+    }
+
+    /**
+     * @param mixed $avatar_url
+     */
+    public function setAvatarUrl($avatar_url)
+    {
+        $this->avatar_url = $avatar_url;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
 
   
 
 /******************************************************/
-public static function createNewServer($name, $id_user){
+    /**
+     * createNewServer
+     *
+     * @param  mixed $name
+     * @param  mixed $id_user
+     * @return void
+     */
+    public static function createNewServer($name, $id_user){
 
         $db = init_db();
         $avatar = '/static/img/anonyme_avatar.png';
@@ -126,44 +133,63 @@ public static function createNewServer($name, $id_user){
         // Check if email already exist
         $req  = $db->prepare( "SELECT * FROM servers WHERE name = ? " );
         $req->execute( array($name));
-    
+        
         if( $req->rowCount() > 0 ) :
-          return false;
+            return false;
         else : 
             $req->closeCursor();
             $req  = $db->prepare( "INSERT INTO servers (name, user_id, avatar_url, url) VALUES (?, ?, ?, ?)" );
             $datas = $req->execute(array($name, $id_user, $avatar, $url));
         endif;
-        }
+    }
+            
+    /**
+    * createUserServer
+    *
+    * @param  mixed $name
+    * @param  mixed $id_user
+    * @return void
+    */
+    public static function createUserServer($name, $id_user){
+        $db = init_db();
+        $req  = $db->prepare( "SELECT id FROM servers WHERE name = ?" );
+        $req->execute(array($name));
+        $data = $req->fetch();
+        $row = $data['id'];
+        $req->closeCursor();
 
-        public static function createUserServer($name, $id_user){
-                $db = init_db();
-                $req  = $db->prepare( "SELECT id FROM servers WHERE name = ?" );
-                $req->execute(array($name));
-                $data = $req->fetch();
-                $row = $data['id'];
-                $req->closeCursor();
-
-                $req  = $db->prepare( "INSERT INTO user_server (id_server, id_user) VALUES (?, ?)" );
-                $datas = $req->execute(array($row, $id_user));
-            }
-
+        $req  = $db->prepare( "INSERT INTO user_server (id_server, id_user) VALUES (?, ?)" );
+        $datas = $req->execute(array($row, $id_user));
+    }
+        
+    /**
+    * displayServeur
+    *
+    * @param  mixed $idServeur
+    * @return void
+    */
     public static function displayServeur($idServeur){
         $db = init_db();
         $req  = $db->prepare( "SELECT c.name as rooms, s.name as nom_server, s.user_id as admin, s.url, s.avatar_url
-                                 FROM servers as s,  channels as c
-                                WHERE  c.server_id = s.id
-                                AND  s.id = ? " );
-            $req->execute( array($idServeur));
+                                    FROM servers as s,  channels as c
+                                    WHERE  c.server_id = s.id
+                                    AND  s.id = ? " );
+        $req->execute( array($idServeur));
     }
-
+                
+    /**
+    * getAllServeurByUser
+    *
+    * @param  mixed $idUser
+    * @return void
+    */
     public static function getAllServeurByUser($idUser){
         $db = init_db();
         $req  = $db->prepare( "SELECT * FROM servers as s, user_server as us, users as u
-                                WHERE  s.id = us.id_server
-                                AND u.id = us.id_user
-                                AND u.id = ?");
-            $req->execute(array($idUser));
+                                    WHERE  s.id = us.id_server
+                                    AND u.id = us.id_user
+                                    AND u.id = ?");
+        $req->execute(array($idUser));
         return $req->fetchAll();
     }
 }

@@ -2,8 +2,11 @@
 
 require_once('database.php');
 
-class User
-{
+/**
+ * User
+ */
+class User {
+
     protected $id;
     protected $email;
     protected $username;
@@ -98,8 +101,14 @@ class User
 
     /**************************************
      * -------- GET USER DATA BY ID --------
-     ***************************************/
-
+    ***************************************/
+    
+    /**
+     * getUserById
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public static function getUserById($id)
     {
         // Open database connection
@@ -117,7 +126,14 @@ class User
     /***************************************
      * ------- GET USER DATA BY USERNAME -------
      ****************************************/
-
+    
+    /**
+     * getUserByCredentials
+     *
+     * @param  mixed $email
+     * @param  mixed $password
+     * @return void
+     */
     public static function getUserByCredentials($email, $password)
     {
         // Open database connection
@@ -134,7 +150,13 @@ class User
 
         return $req->fetch();
     }
-
+    
+    /**
+     * getFriendsForUser
+     *
+     * @param  mixed $user_id
+     * @return array
+     */
     public static function getFriendsForUser($user_id): array
     {
         // Open database connection
@@ -148,7 +170,13 @@ class User
 
         return $req->fetchAll();
     }
-
+    
+    /**
+     * findUserWithUsername
+     *
+     * @param  mixed $username
+     * @return void
+     */
     public static function findUserWithUsername($username)
     {
         // Open database connection
@@ -163,7 +191,14 @@ class User
         return $req->fetch();
     }
 
-
+    
+    /**
+     * isAlreadyFriend
+     *
+     * @param  mixed $user_id
+     * @param  mixed $friend_id
+     * @return void
+     */
     public static function isAlreadyFriend($user_id, $friend_id)
     {
         // Open database connection
@@ -185,7 +220,14 @@ class User
         return $isAlreadyFriend;
         
     }
-
+    
+    /**
+     * addFriend
+     *
+     * @param  mixed $user_id
+     * @param  mixed $friend_id
+     * @return void
+     */
     public static function addFriend($user_id, $friend_id)
     {
         // Open database connection
@@ -204,10 +246,15 @@ class User
         return $id;
     }
 
-/***********************************
-* -------- CREATE NEW USER ---------
-************************************/
-
+    /***********************************
+    * -------- CREATE NEW USER ---------
+    ************************************/
+  
+  /**
+   * createUser
+   *
+   * @return void
+   */
   public function createUser() {
 
     // Open database connection
@@ -234,46 +281,58 @@ class User
     // Close databse connection
     $db = null;
 
-  }
+    }
+    
+    /**
+     * __construct
+     *
+     * @param  mixed $user
+     * @return void
+     */
+    public function __construct( $user = null ) {
 
-  public function __construct( $user = null ) {
+        if( $user != null ):
+        $this->setId( isset( $user->id ) ? $user->id : null );
+        $this->setEmail( $user->email );
+        $this->setUsername( $user->username );
+        $this->setAvatarUrl( $user->avatar_url);
+        $this->setPassword( $user->password, isset( $user->password_confirm ) ? $user->password_confirm : false );
+        
+        endif;
+    }
+    
+    /**
+     * filterUsers
+     *
+     * @param  mixed $username
+     * @return array
+     */
+    public static function filterUsers($username = null) : array
+    {
+        // Open database connection
+        $db = init_db();
+        $sql = "SELECT * FROM users WHERE ";
 
-    if( $user != null ):
-      $this->setId( isset( $user->id ) ? $user->id : null );
-      $this->setEmail( $user->email );
-      $this->setUsername( $user->username );
-      $this->setAvatarUrl( $user->avatar_url);
-      $this->setPassword( $user->password, isset( $user->password_confirm ) ? $user->password_confirm : false );
-      
-    endif;
-  }
+        $fields = [];
 
-  public static function filterUsers($username = null) : array
-  {
-      // Open database connection
-      $db = init_db();
-      $sql = "SELECT * FROM users WHERE ";
+        if ($username != null) {
+            array_push($fields, "username LIKE '%" . $username . "%'");
+        }
 
-      $fields = [];
+        if (sizeof($fields) > 0) {
+            $sql .= join(" AND ", $fields);
+        }
+        else {
+            $sql .= "1";
+        }
+        $sql .= " ORDER BY username DESC";
 
-      if ($username != null) {
-          array_push($fields, "username LIKE '%" . $username . "%'");
-      }
-
-      if (sizeof($fields) > 0) {
-          $sql .= join(" AND ", $fields);
-      }
-      else {
-          $sql .= "1";
-      }
-      $sql .= " ORDER BY username DESC";
-
-      $req = $db->prepare($sql);
-      $req->execute();
-      // Close database connection
-      $db = null;
-      return $req->fetchAll(PDO::FETCH_ASSOC);
-  }
+        $req = $db->prepare($sql);
+        $req->execute();
+        // Close database connection
+        $db = null;
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 

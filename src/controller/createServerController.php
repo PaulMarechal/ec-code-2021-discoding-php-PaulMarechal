@@ -4,7 +4,7 @@ require_once('model/user.php');
 require_once('model/channel.php');
 require_once('model/messageChannel.php');
 
-
+// Create a server 
 function createServer(){
     $name_server = isset($_POST['server_name']) ? $_POST['server_name'] : '';
     $rooms = isset($_POST['number_rooms']) ? $_POST['number_rooms'] : '';
