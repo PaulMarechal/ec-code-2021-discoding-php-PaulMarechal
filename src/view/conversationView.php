@@ -6,6 +6,7 @@
         <?= $conversation_list_partial ?>
 
         <div class="col-sm-6 col-md-9 mt-2">
+            
             <div class="row m-auto">
                 <h3><?= $interlocutor['username'] ?></h3>
 
@@ -30,6 +31,7 @@
                             ?>
                             <img src="<?= $avatarUrl ?>" class="rounded-circle avatar mx-2"/>
                         </div>
+                        <?php if   ($message['user_id'] == $user_id) : ?>
                         <div class="card-body">
                             <div class="card-title d-flex">
                                 <div class="flex-grow-1 fw-bold">
@@ -51,9 +53,26 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </form>
+                        <div id="refresh">
+                        <?php else:  ?>
+                            <div class="card-body">
+                            <div class="card-title d-flex">
+                                <div class="flex-grow-1 fw-bold">
+                                    <?= $msgUser['username'] ?>
+                                </div>
+                                <div class="text-muted fs-6">
+                                    <?= $message['created_at'] ?>
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <?= $message['content'] ?>
+                            </div>
+                        </div>
+                        <?php endif ?>
                     </div>
                 <?php endforeach; ?>
 
+            </div>
             </div>
             <!-- Button send message -->
             <form class="d-flex mt-3" action="/index.php?action=conversation&sub_action=add_message&conversation_id=<?= $conversation_id ?>" method="post">
@@ -69,7 +88,7 @@
 </div>
 
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/static/js/page_conversation_detail.js"></script>
 
 <?php $content = ob_get_clean(); ?>

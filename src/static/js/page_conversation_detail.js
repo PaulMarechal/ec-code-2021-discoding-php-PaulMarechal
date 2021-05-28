@@ -6,3 +6,9 @@ contentInput.addEventListener("keyup", function (event) {
         document.getElementById("sendMessage").click();
     }
 });
+
+$(document).ready(function () {
+  setInterval(function () {
+    $("#refresh").load(window.location.href + " #refresh");
+  }, 5000); 
+});

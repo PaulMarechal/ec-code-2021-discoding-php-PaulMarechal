@@ -24,15 +24,24 @@ function signupPage() {
 ***************************/
 
 function signup( $post ) {
-  $data                   = new stdClass();
-  $data->email            = $post['email'];
-  $data->username         = $post['username'];
-  $data->avatar_url       = $post['avatar_url'];
-  $data->password         = hash('sha256', $post['password']);
-  $data->password_confirm = hash('sha256', $post['password_confirm']);
-  
-  
 
+  if(!empty($post)){
+
+    $data                   = new stdClass();
+    $data->email            = $post['email'];
+    $data->username         = $post['username'];
+    $data->avatar_url       = $post['avatar_url'];
+    $data->password         = hash('sha256', $post['password']);
+    $data->password_confirm = hash('sha256', $post['password_confirm']);
+  
+    if(empty($post['email']) && empty($post['username']) && $post['password']){
+      $error_msg =  "<p class='errorMessage'>Please fill in all the information 🤓</p>";
+    }
+
+    elseif(!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $post['email'])){
+        $error_msg = "<p class='errorMessage'>Please enter a valid email</p>";
+    }
+    
   # Check if passwords are matching
   try {
       $user               = new User( $data );
@@ -43,10 +52,13 @@ function signup( $post ) {
       header( 'location: index.php ');
   }
   catch (Exception $e) {
-      $error_msg = $e->getMessage();
+      //$error_msg = $e->getMessage();
+      $error_msg =  "<p class='errorMessage'>Please fill in all the information 🤓</p>";
+
   }
 
   require('view/signupView.php');
 } 
+}
 
 ?>

@@ -13,7 +13,7 @@
                 <i class="bi-envelope-fill mx-2"></i>Contact
             </a>
         </li>
-        <li class="list-group-item my-3">
+        <li class="list-group-item">
             <a href="/index.php?action=friend">
                 <i class="bi-people-fill mx-2"></i>Friends
             </a>
@@ -23,6 +23,10 @@
     
     <!-- Friend list on menu -->
     <ul class="list-group border-0 friendScroll" style="overflow:scroll; height:360px;">
+    <li class="list-group-item border-0" style="text-align;center;">
+                    <h5>My Friends</h5>
+                    <hr>
+            </li>
         <?php foreach ($conversations as $conv): ?>
             <li class="list-group-item border-0">
                 
@@ -39,14 +43,14 @@
                     <?= $conv['interlocutor_username']; ?>
                 </a>
             </li>
-            <?php endforeach; ?>
-        </ul>
+        <?php endforeach; ?>
+    </ul>
                     
-        <!-- Display Rooms -->
+        <!-- Display Rooms test-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
         <div class="menuAccordeon">
-        <ul class="nav">
+        <!-- <ul class="nav">
 		    <li class="nav__item">
 			    <a href="#profile" class="nav__item-link">
 				    <i class="fas fa-user"></i> Coding
@@ -55,10 +59,10 @@
 				<a href="#" class="nav__submenu-link">Général</a>
                 <a href="#" class="nav__submenu-link">Jeux</a>
 				<a href="#" class="nav__submenu-link">Musique</a>
-			</div>
+			</div> 
+		 </li>
 		</li>
-		</li>
-	</ul>
+	</ul> -->
   </div>
 
     </div>

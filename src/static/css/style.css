@@ -100,10 +100,19 @@ html, body {
     height:360px;
 }
 
+.friendScroll{
+    overflow:scroll; 
+    height:360px;
+}
+
+.addFriendButton{
+    margin-top: 0.6em;
+}
+
 
 /* Serveur Menu */
 
-.menuAccordeon {
+/* .menuAccordeon {
     box-sizing: border-box;
 }
 
@@ -178,11 +187,8 @@ html, body {
 
 .nav__submenu:target {
 	/*border: 5px solid red;*/
-	max-height: 10rem;
-}
+	/* max-height: 10rem; */
+/* }  */
 
-.friendScroll{
-    overflow:scroll; 
-    height:360px;
-}
+
 
