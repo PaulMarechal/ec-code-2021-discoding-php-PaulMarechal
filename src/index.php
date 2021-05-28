@@ -8,7 +8,8 @@ require_once('controller/friendController.php');
 require_once('controller/loginController.php');
 require_once('controller/signupController.php');
 require_once( 'controller/contactController.php' );
-
+require_once('controller/createServerController.php');
+require_once('controller/serverController.php');
 
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
@@ -43,6 +44,13 @@ if (isset($_GET['action'])) {
 
         case 'friend':
             friendPage();
+            break;
+
+        case 'create_server':
+            createServer();
+            break;
+        case 'server':
+            serverPage();
             break;
     }
 } else {

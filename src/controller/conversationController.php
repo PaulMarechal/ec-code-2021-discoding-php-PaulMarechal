@@ -1,6 +1,8 @@
 <?php
 require_once('model/conversation.php');
 require_once('model/message.php');
+require_once('model/server.php');
+
 function conversationPage()
 {
     $user_id = $_SESSION['user_id'] ?? false;
@@ -54,10 +56,12 @@ function conversationDetail($user_id)
 function conversationListPartial($user_id)
 {
     $conversations = Conversation::getAllConversationsForUser($user_id);
+    $list = server::getAllServeurByUser($user_id);
     $conversation_list_content = '';
     require('view/conversationListViewPartial.php');
     return $conversation_list_content;
 }
+
 function addMessage($user_id)
 {
     $conversation_id = $_GET['conversation_id'];

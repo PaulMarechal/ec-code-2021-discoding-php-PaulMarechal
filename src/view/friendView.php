@@ -8,8 +8,7 @@
             <div class="row">
                 <!-- Title page : friend -->
                 <div class="col">
-                    <h2><i class="bi-people-fill mx-2">
-                    </i>Friends</h2>
+                    <h2><i class="bi-people-fill mx-2"></i>Friends</h2>
                     <!-- Search a friend -->
                     <form class="d-flex mb-2">
                         <input class="form-control me-2" type="search" id="search" name="username" placeholder="Search a friend in discoding" aria-label="Search">

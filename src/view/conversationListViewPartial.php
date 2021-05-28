@@ -18,6 +18,12 @@
                 <i class="bi-people-fill mx-2"></i>Friends
             </a>
         </li>
+        </li>
+            <li class="list-group-item">
+            <a href="/index.php?action=create_server">
+                <i class="bi bi-server mx-2"></i>create a server
+            </a>
+        </li>
     </ul>
     
     
@@ -64,6 +70,21 @@
 		</li>
 	</ul> -->
   </div>
+  <ul class="list-group border-0" style="overflow:auto;height:180px;">
+        <li class="list-group-item border-0">
+                    <h5>My Servers</h5>
+                    <hr>
+        </li>
+    <?php foreach ($list as $server): ?>
+         
+            <li class="list-group-item border-0">
+                 <a href="index.php?action=server&server=<?= $server['url'] ?>">
+                    <img src="<?= $server['avatar_url'] ?>" class="rounded-circle avatar-small mx-2"/>
+                    <?= $server['name']; ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 
     </div>
 <?php $conversation_list_content = ob_get_clean(); ?>
