@@ -10,7 +10,7 @@
                 <div class="col">
                     <h2><i class="bi-people-fill mx-2">
                     </i>Friends</h2>
-
+                    <!-- Search a friend -->
                     <form class="d-flex mb-2">
                         <input class="form-control me-2" type="search" id="search" name="username" placeholder="Search a friend in discoding" aria-label="Search">
                         <button id="sendMessage" class="btn btn-outline-success" type="submit">Search</button>
@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="align-self-center">
-                                    <a href="/index.php?action=conversation&sub_action=start_with_user&interlocutor_id=<?= $friend['id'] ?>">Message</a>
+                                    <a href="/index.php?action=conversation&sub_action=start_with_user&interlocutor_id=<?= $user['id'] ?>">Message</a>
                             </div>
                         </li>
                     <?php endforeach; ?>

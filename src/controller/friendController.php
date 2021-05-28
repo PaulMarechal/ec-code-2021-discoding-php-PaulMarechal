@@ -48,9 +48,9 @@
 
     function displayFriends($user_id)
     {
+        $user_data = User::getUserById($user_id);
         $search = isset( $_GET['username'] ) ? $_GET['username'] : null;
         $users = User::filterUsers( $search );
-        $user_data = User::getUserById($user_id);
         $friends = User::getFriendsForUser($user_id);
         $conversation_list_partial = conversationListPartial($user_id);
         require('view/friendView.php');
